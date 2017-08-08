@@ -10,7 +10,7 @@ ENV ROON_SERVER_URL http://download.roonlabs.com/builds/${ROON_SERVER_PKG}
 ENV ROON_DATAROOT /data
 ENV ROON_ID_DIR /data
 
-VOLUME [ "/app", "/data", "/music" ]
+VOLUME [ "/app", "/data", "/music", "/backup" ]
 
 ADD run.sh /
 ENTRYPOINT /run.sh
