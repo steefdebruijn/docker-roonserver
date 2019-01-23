@@ -1,4 +1,4 @@
-FROM debian:9.0
+FROM debian:9.6
 MAINTAINER steef@debruijn.ws
 
 RUN apt-get update \

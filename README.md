@@ -13,7 +13,7 @@ Example start:
       -v roon-data:/data \
       -v roon-music:/music \
       -v roon-backups:/backup \
-      steefdebruijn/docker-roonserver
+      steefdebruijn/docker-roonserver:latest
   
   * You should set `TZ` to your timezone.
   * You can change the volume mappings to local file system paths if you like.
@@ -22,3 +22,9 @@ Example start:
   Have fun!
   
   Steef
+
+## Version history
+
+  * 2019-01-23: updated base image to `debian-9.6`
+  * 2017-08-08: created initial images based on discussion on roonlabs forum
+
