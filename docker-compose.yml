@@ -1,0 +1,22 @@
+
+version: '3'
+
+services:
+  roon-server:
+    build: docker/roon-server
+    image: steefdebruijn/docker-roonserver
+    container_name: roon-server
+    network_mode: "host"
+    restart: always
+    environment:
+      - TZ="Europe/Amsterdam"
+    volumes:
+      - roon-app:/app
+      - roon-data:/data
+      - /path/to/your/music:/music
+      - roon-backups:/backup
+
+volumes:
+  roon-app:
+  roon-data:
+  roon-backups:
