@@ -1,5 +1,5 @@
 
-version: '3'
+version: '3.7'
 
 services:
   roon-server:
@@ -8,6 +8,7 @@ services:
     container_name: roon-server
     network_mode: "host"
     restart: always
+    init: true
     environment:
       - TZ="Europe/Amsterdam"
     volumes:
