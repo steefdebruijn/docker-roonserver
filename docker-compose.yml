@@ -15,10 +15,11 @@ services:
     volumes:
       - roon-app:/app
       - roon-data:/data
-      - /path/to/your/music:/music
+      - roon-music:/music
       - roon-backups:/backup
 
 volumes:
   roon-app:
   roon-data:
   roon-backups:
+  roon-music:
