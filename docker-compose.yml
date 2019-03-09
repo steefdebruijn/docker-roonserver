@@ -3,12 +3,13 @@ version: '3.7'
 
 services:
   roon-server:
-    build: docker/roon-server
     image: steefdebruijn/docker-roonserver
     container_name: roon-server
     network_mode: "host"
     restart: always
     init: true
+    devices:
+      - "/dev/snd:/dev/snd"
     environment:
       - TZ="Europe/Amsterdam"
     volumes:
