@@ -87,16 +87,19 @@ Example `docker-compose.yaml` (adapt to your environment):
 If you find yourself in trouble using remote SMB/CIFS shares, you probably need some additional privileges on the container.
 You have two options here (see also issue #15):
 
-  * Run the Roon container in privileged mode
+Run the Roon container in privileged mode
 
+    # standalone or from systemd service:
     docker run --privileged --name roonserver ...
 
-    privileged: true # in docker-compose.yaml
+    # docker-compose.yaml (inside service section):
+    privileged: true
 
-  * Run the Roon container with the right privileges. Some of these are docker-related, but depending on your host distribution and security settings you may need additional privileges.
+Run the Roon container with the right privileges. Some of these are docker-related, but depending on your host distribution and security settings you may need additional privileges.
 
+    # standalone or from systemd service:
     docker run --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH --security-opt apparmor:unconfined ...
-
+    
     # docker-compose.yaml (inside service section):
     cap_add:
       - SYS_ADMIN
@@ -136,4 +139,5 @@ I have not tried this myself, I do not use Roon extensions.
   * 2019-03-18: Fix example start (thanx @heapxor); add `systemd` example.
   * 2019-01-23: updated base image to `debian-9.6`
   * 2017-08-08: created initial images based on discussion on roonlabs forum
+
 
