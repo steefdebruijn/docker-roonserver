@@ -82,6 +82,29 @@ Example `docker-compose.yaml` (adapt to your environment):
       roon-backups:
 
 
+## Network shares
+
+If you find yourself in trouble using remote SMB/CIFS shares, you probably need some additional privileges on the container.
+You have two options here (see also issue #15):
+
+  * Run the Roon container in privileged mode
+
+    docker run --privileged --name roonserver ...
+
+    privileged: true # in docker-compose.yaml
+
+  * Run the Roon container with the right privileges. Some of these are docker-related, but depending on your host distribution and security settings you may need additional privileges.
+
+    docker run --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH --security-opt apparmor:unconfined ...
+
+    # docker-compose.yaml (inside service section):
+    cap_add:
+      - SYS_ADMIN
+      - DAC_READ_SEARCH
+    security_opt:
+      - apparmor:unconfined
+
+
 ## Network issues
 
   If your docker host has multiple networks attached and your core has trouble finding audio sinks/endpoints, you can try using a specific docker network setup as described in issue #1:
