@@ -51,6 +51,14 @@ Example `systemd` service:
     [Install]
     WantedBy=multi-user.target
 
+  If your docker host has multiple networks attached and your core has trouble finding audio sinks/endpoints, you can try using a specific docker network setup as described in issue #1:
+
+    docker network create -d macvlan \
+       --subnet 192.168.1.0/24 --gateway 192.168.1.1 \
+       --ip-range 192.168.1.240/28 -o parent=enp4s0 roon-lan
+    docker run --network roon-lan --name roonserver ...
+
+  Use the subnet and corresponding gateway that your audio sinks/endpoints are connected to. Use an ip-range for docker that is not conflicting with other devices on your network and outside of the DHCP range on that subnet if applicable.
 
   Don't forget to backup the `roon-backups` *for real* (offsite preferably).
 
@@ -60,7 +68,7 @@ Example `systemd` service:
 
 ## Version history
 
-  * 2022-03-19: Fix download URL, follow redirects on download
+  * 2022-03-19: Fix download URL, follow redirects on download. Added specific usage scenarios in README.
   * 2021-05-24: update base image to `debian-10.9-slim` and check for shared `/app` and `/data` folders.
   * 2019-03-18: Fix example start (thanx @heapxor); add `systemd` example.
   * 2019-01-23: updated base image to `debian-9.6`
