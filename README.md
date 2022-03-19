@@ -21,8 +21,11 @@ Example start:
     The app will not start if they both point to the same folder or volume on your host.
   * You should set up your library root to `/music` and configure backups to `/backup` on first run.
 
+## Systemd
 
-Example `systemd` service:
+If you deploy on a host with `systemd`, you should use a systemd service to start the Roon service.
+
+Example `systemd` service (adapt to your environment):
 
     [Unit]
     Description=Roon
@@ -51,6 +54,36 @@ Example `systemd` service:
     [Install]
     WantedBy=multi-user.target
 
+## Docker-compose
+
+If you deploy in a `docker-compose` environment, create a `docker-compose.yaml` file and run `docker-compose run <service>`.
+
+Example `docker-compose.yaml` (adapt to your environment):
+
+    version: "3.7"
+    services:
+      docker-roonserver:
+        image: steefdebruijn/docker-roonserver:latest
+        container_name: docker-roonserver
+        hostname: docker-roonserver
+        network_mode: host
+        environment:
+          TZ: "Europe/Amsterdam"
+        volumes:
+          - roon-app:/app
+          - roon-data:/data
+          - roon-music:/music
+          - roon-backups:/backup
+        restart: always
+    volumes:
+      roon-app:
+      roon-data:
+      roon-music:
+      roon-backups:
+
+
+## Network issues
+
   If your docker host has multiple networks attached and your core has trouble finding audio sinks/endpoints, you can try using a specific docker network setup as described in issue #1:
 
     docker network create -d macvlan \
@@ -59,6 +92,8 @@ Example `systemd` service:
     docker run --network roon-lan --name roonserver ...
 
   Use the subnet and corresponding gateway that your audio sinks/endpoints are connected to. Use an ip-range for docker that is not conflicting with other devices on your network and outside of the DHCP range on that subnet if applicable.
+
+## Backups
 
   Don't forget to backup the `roon-backups` *for real* (offsite preferably).
 
