@@ -116,6 +116,11 @@ You have two options here (see also issue #15):
 
   Use the subnet and corresponding gateway that your audio sinks/endpoints are connected to. Use an ip-range for docker that is not conflicting with other devices on your network and outside of the DHCP range on that subnet if applicable.
 
+## Extensions
+
+If you would like to use the Roon extensions, please deploy a separate docker container for the extension manager, for example [this one](https://hub.docker.com/r/theappgineer/roon-extension-manager).
+I have not tried this myself, I do not use Roon extensions.
+
 ## Backups
 
   Don't forget to backup the `roon-backups` *for real* (offsite preferably).
