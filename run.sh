@@ -26,7 +26,7 @@ if test ! -d RoonServer; then
 	echo "Missing URL ROON_SERVER_URL and/or app name ROON_SERVER_PKG"
 	exit 1
     fi
-    curl $ROON_SERVER_URL -O
+    curl -L $ROON_SERVER_URL -O
     tar xjf $ROON_SERVER_PKG
     rm -f $ROON_SERVER_PKG
 fi

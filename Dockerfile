@@ -6,7 +6,7 @@ RUN apt-get update \
         && apt-get -y install bash curl bzip2 ffmpeg cifs-utils alsa-utils
 
 ENV ROON_SERVER_PKG RoonServer_linuxx64.tar.bz2
-ENV ROON_SERVER_URL http://download.roonlabs.com/builds/${ROON_SERVER_PKG}
+ENV ROON_SERVER_URL https://download.roonlabs.net/builds/${ROON_SERVER_PKG}
 ENV ROON_DATAROOT /data
 ENV ROON_ID_DIR /data
 

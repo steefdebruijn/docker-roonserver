@@ -60,7 +60,8 @@ Example `systemd` service:
 
 ## Version history
 
-  * 2020-05-24: update base image to `debian-10.9-slim` and check for shared `/app` and `/data` folders.
+  * 2022-03-19: Fix download URL, follow redirects on download
+  * 2021-05-24: update base image to `debian-10.9-slim` and check for shared `/app` and `/data` folders.
   * 2019-03-18: Fix example start (thanx @heapxor); add `systemd` example.
   * 2019-01-23: updated base image to `debian-9.6`
   * 2017-08-08: created initial images based on discussion on roonlabs forum
