@@ -1,4 +1,4 @@
-FROM debian:10.9-slim
+FROM debian:10-slim
 MAINTAINER steef@debruijn.ws
 
 RUN apt-get update \
