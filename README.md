@@ -134,8 +134,9 @@ I have not tried this myself, I do not use Roon extensions.
 
 ## Version history
 
+  * 2022-04-12: update base image to 'debian:11-slim'
   * 2022-03-19: Fix download URL, follow redirects on download. Added specific usage scenarios in README.
-  * 2021-05-24: update base image to `debian-10.9-slim` and check for shared `/app` and `/data` folders.
+  * 2021-05-24: update base image to `debian:10.9-slim` and check for shared `/app` and `/data` folders.
   * 2019-03-18: Fix example start (thanx @heapxor); add `systemd` example.
   * 2019-01-23: updated base image to `debian-9.6`
   * 2017-08-08: created initial images based on discussion on roonlabs forum
