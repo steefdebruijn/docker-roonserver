@@ -134,6 +134,7 @@ I have not tried this myself, I do not use Roon extensions.
 
 ## Version history
 
+  * 2023-11-03: update base image to 'debian:12-slim', dependency to libicu72
   * 2022-04-12: update base image to 'debian:11-slim'
   * 2022-03-19: Fix download URL, follow redirects on download. Added specific usage scenarios in README.
   * 2021-05-24: update base image to `debian:10.9-slim` and check for shared `/app` and `/data` folders.
