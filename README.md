@@ -157,6 +157,21 @@ Use the subnet and gateway that match your audio endpoints. Choose an IP range t
 
 For Roon extensions, deploy a separate container for the extension manager, such as [theappgineer/roon-extension-manager](https://hub.docker.com/r/theappgineer/roon-extension-manager).
 
+## Sound cards on host
+
+If you want to use soundcard(s) attached to docker host, try mounting the soundcard device(s) to the roon container.
+
+Direct or via systemd:
+
+    docker run --device /dev/snd:/dev/snd ....
+
+or via compose:
+
+    devices:
+      - "/dev/snd:/dev/snd"
+
+See also issue #26.
+
 ## Backups
 
 **Important**: Always maintain offsite backups of your `/opt/local/var/roon/backup` volume.
@@ -199,17 +214,6 @@ For issues related to:
 
 - **This Docker image**: Open an issue in this repository
 - **Roon Server**: Visit [Roon Labs Support](https://roon.app/support)
-
-## Version History
-
-- 2024-10-19: Updated to Ubuntu base image, refactored installation scripts, added Make targets
-- 2023-11-03: Updated base image to 'debian:12-slim', dependency to libicu72
-- 2022-04-12: Updated base image to 'debian:11-slim'
-- 2022-03-19: Fixed download URL, follow redirects on download. Added specific usage scenarios in README
-- 2021-05-24: Updated base image to `debian:10.9-slim` and check for shared `/app` and `/data` folders
-- 2019-03-18: Fixed example start; added `systemd` example
-- 2019-01-23: Updated base image to `debian-9.6`
-- 2017-08-08: Created initial images based on discussion on Roon Labs forum
 
 ## Acknowledgments
 
